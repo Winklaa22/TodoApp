@@ -31,17 +31,26 @@ namespace DoToApp.Controllers
             return tasks;
         }
 
+        [HttpGet("GetTasksByDate")]
+        public IEnumerable<TaskDTO> GetTasksByDate()
+        {
+            var sql = $@"SELECT * FROM TodoAppSchema.Tasks ORDER BY CreateOn";
+            var tasks = _dataContext.LoadData<TaskDTO>(sql);
+            return tasks;
+        }
+
         [HttpPost("AddTask")]
         public IActionResult AddTask(TaskToAddDTO task)
         {
             var sql = $@"INSERT INTO TodoAppSchema.Tasks (
                             TaskName, 
-                            IconName, 
-                            TaskDesc
+                            TaskDesc,
+                            CreateOn
                         ) VALUES (
                             '{task.TaskName}', 
-                            '{task.IconName}', 
-                            '{task.TaskDesc}')";
+                            '{task.TaskDesc}',
+                            '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}')";
+                            
 
             if (_dataContext.ExecuteSql(sql))
                 return Ok();
@@ -65,8 +74,8 @@ namespace DoToApp.Controllers
         {
             var sql = $@"UPDATE TodoAppSchema.Tasks SET 
                             TaskName = '{task.TaskName}', 
-                            IconName = '{task.IconName}', 
-                            TaskDesc = '{task.TaskDesc}', 
+                            TaskDesc = '{task.TaskDesc}',
+                            CreateOn = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}',
                             IsCompleted = '{task.IsCompleted}'
                         WHERE TaskGuid = '{task.TaskGuid}'";
 
