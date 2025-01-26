@@ -15,7 +15,7 @@ const App = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/Tasks/GetTasks');
+      const response = await axios.get('http://localhost:5000/Tasks/GetTasksByDate');
       setTasks(response.data);
     } catch (error) {
       console.error('Error fetching tasks', error);
@@ -47,7 +47,6 @@ const App = () => {
     try {
       const taskData = {
         taskName: taskName,
-        iconName: "",
         taskDesc: taskDesc
       };
 
@@ -112,6 +111,7 @@ const App = () => {
               <tr>
                 <th>Task Name</th>
                 <th>Description</th>
+                <th>Create Date</th>
                 <th>Completed</th>
                 <th>Actions</th>
               </tr>
@@ -121,10 +121,9 @@ const App = () => {
                 <tr key={task.taskGuid}>
                   <td>{task.taskName}</td>
                   <td>{task.taskDesc != "" ? task.taskDesc : "No description"}</td>
+                  <td>{new Date(task.createOn).toISOString().split('T')[0]}</td>
                     <td>
                       <div className='isCompleted-label'>
-                      
-
                         <input type="checkbox" 
                           checked={task.isCompleted} 
                           onChange={e => completedChange(task.taskGuid, e.target.checked)}
