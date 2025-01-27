@@ -85,6 +85,19 @@ namespace DoToApp.Controllers
             throw new Exception("Failed to edit task");
         }
 
+        [HttpPut("EditTaskData")]
+        public IActionResult EditTaskData(TaskToEditDTO task)
+        {
+            var sql = $@"UPDATE TodoAppSchema.Tasks SET 
+                            TaskName = '{task.TaskName}', 
+                            TaskDesc = '{task.TaskDesc}'
+                        WHERE TaskGuid = '{task.TaskGuid}'";
+
+            if (_dataContext.ExecuteSql(sql))
+                return Ok();
+
+            throw new Exception("Failed to edit task");
+        }
         [HttpPut("EditTaskIsComplete")]
         public IActionResult EditTaskIsComplete(string taskGuid, bool isCompleted)
         {
