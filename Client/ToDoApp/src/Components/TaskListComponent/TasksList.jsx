@@ -3,8 +3,8 @@ import axios from 'axios';
 import "./TaskList.css"
 
 const TasksList = ({fetchTasksFunc, tasksList, setEditingTaskFunc}) =>{
-    
-    const [isCompleted, setIsCompleted] = useState(false);
+
+  const [isCompleted, setIsCompleted] = useState(false);
 
     const deleteTask = async (taskGuid) => {
         try {

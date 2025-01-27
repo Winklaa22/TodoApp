@@ -4,6 +4,7 @@ import './styles/App.css';
 import './styles/Buttons.css'
 import AddTaskForm from './Components/AddTaskComponent/AddTaskForm';
 import TasksList from './Components/TaskListComponent/TasksList';
+import EditTask from './Components/EditTaskComponent/EditTask';
 
 const App = () => {
 
@@ -27,16 +28,14 @@ const App = () => {
   return (
     <div className="container">
       <h1>Task Manager</h1>
-      {editingTask 
-          ? <h2> "{editingTask.taskName}" Is editing</h2>
+      {editingTask != null
+          ?  <EditTask editingTask={editingTask} setEditingTaskFunc={setEditingTask}/>
           : 
           <>
             <AddTaskForm fetchTasksFunc={fetchTasks} />
             <TasksList fetchTasksFunc={fetchTasks} tasksList={tasks} setEditingTaskFunc={setEditingTask} />
           </>
       }
-
-      {editingTask && <button onClick={() => setEditingTask(null)}>stop editing</button>}
       
     </div>
   );
