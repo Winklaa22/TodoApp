@@ -1,0 +1,39 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+p{
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #444;
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+/* Container styles */
+.container {
+  min-width: 600px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  transition: .2s;
+}

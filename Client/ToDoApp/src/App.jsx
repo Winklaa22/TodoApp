@@ -1,9 +1,9 @@
-
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import './App.css';
-import AddTaskForm from './AddTaskForm';
-import TasksList from './TasksList';
+import './styles/App.css';
+import './styles/Buttons.css'
+import AddTaskForm from './Components/AddTaskComponent/AddTaskForm';
+import TasksList from './Components/TaskListComponent/TasksList';
 
 const App = () => {
 

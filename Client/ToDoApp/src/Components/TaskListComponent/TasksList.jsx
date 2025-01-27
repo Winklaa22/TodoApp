@@ -1,5 +1,6 @@
 import {useState } from 'react';
 import axios from 'axios';
+import "./TaskList.css"
 
 const TasksList = ({fetchTasksFunc, tasksList, setEditingTaskFunc}) =>{
     
@@ -56,10 +57,12 @@ const TasksList = ({fetchTasksFunc, tasksList, setEditingTaskFunc}) =>{
 
                     </td>
                   <td>
-                    <button className="edit-btn" onClick={() => setEditingTaskFunc(task)}>Edit</button>
-                    <button className="delete-btn" onClick={() => deleteTask(task.taskGuid)}>
-                      Delete
-                    </button>
+                    <div className='actions-btns'>
+                      <button className="edit-btn" onClick={() => setEditingTaskFunc(task)}>Edit</button>
+                      <button className="delete-btn" onClick={() => deleteTask(task.taskGuid)}>
+                        Delete
+                      </button>                      
+                    </div>
                   </td>
                 </tr>
               ))}

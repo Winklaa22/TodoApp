@@ -1,0 +1,51 @@
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+.task-table th, .task-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    color: black
+}
+
+.task-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.task-table .task-unchecked:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.task-table .task-unchecked{
+    opacity: 1;
+    transition: .2s ease-in-out;
+}
+
+.task-table .task-unchecked:hover {
+    background-color: #f1f1f1;
+}
+
+.task-table .task-checked{
+    opacity: .6;
+    box-shadow: 0px 0px 38px -13px rgba(66, 68, 90, 1);
+    background-color: #75aa77;
+    transition: .2s ease-in-out;
+}
+
+.task-table input {
+    text-align: center;
+}
+
+.isCompleted-label{
+    width: 100%;
+    text-align: center;
+}
+
+.actions-btns{
+    display: flex;
+    gap: .5rem;
+}
