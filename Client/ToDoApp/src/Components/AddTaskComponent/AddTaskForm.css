@@ -1,0 +1,16 @@
+.new-task-container{
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+.new-task-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  
+.new-task-form .form-row{
+    width: 100%;
+}
