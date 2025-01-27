@@ -70,6 +70,7 @@ h2 {
 
 /* Container styles */
 .container {
+  min-width: 600px;
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
@@ -77,12 +78,14 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+  transition: .2s;
 }
 
 /* Table styles */
 .task-table {
   width: 100%;
   border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
 
@@ -98,12 +101,24 @@ h2 {
   color: white;
 }
 
-.task-table tr:nth-child(even) {
+.task-table .task-unchecked:nth-child(even) {
   background-color: #f9f9f9;
 }
+.task-table .task-unchecked{
+  opacity: 1;
+  transition: .2s ease-in-out;
+}
 
-.task-table tr:hover {
+.task-table .task-unchecked:hover {
   background-color: #f1f1f1;
+}
+
+.task-table .task-checked{
+  opacity: .6;
+  /* filter: blur(2px); */
+  box-shadow: 0px 0px 38px -13px rgba(66, 68, 90, 1);
+  background-color: #75aa77;
+  transition: .2s ease-in-out;
 }
 
 .delete-btn {
@@ -113,10 +128,28 @@ h2 {
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
+  transition: .2s ease-in;
 }
 
 .delete-btn:hover {
   background-color: #e53935;
+  transition: .2s ease-in;
+}
+
+.edit-btn{
+  margin-right: 8px;
+
+  background-color: rgb(209, 141, 15);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .2s ease-in;
+}
+.edit-btn:hover{
+  background-color: rgb(150, 99, 5);
+  transition: .2s ease-in;
 }
 
 .add-btn {
