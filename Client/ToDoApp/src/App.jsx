@@ -5,6 +5,7 @@ import './styles/Buttons.css'
 import AddTaskForm from './Components/AddTaskComponent/AddTaskForm';
 import TasksList from './Components/TaskListComponent/TasksList';
 import EditTask from './Components/EditTaskComponent/EditTask';
+import { motion, AnimatePresence } from "framer-motion";
 
 const App = () => {
 
@@ -28,15 +29,50 @@ const App = () => {
   return (
     <div className="container">
       <h1>Task Manager</h1>
-      {editingTask != null
-          ?  <EditTask editingTask={editingTask} setEditingTaskFunc={setEditingTask} fetchTasksFunc={fetchTasks}/>
-          : 
+      <AnimatePresence mode="wait">
+        {editingTask != null ? (
+          <motion.div
+            key="edit-task"
+            initial={{ opacity: 0, y: 100 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 0.3 }}
+          >
+            <EditTask
+              editingTask={editingTask}
+              setEditingTaskFunc={setEditingTask}
+              fetchTasksFunc={fetchTasks}
+            />
+          </motion.div>
+        ) : (
           <>
-            <AddTaskForm fetchTasksFunc={fetchTasks} />
-            <TasksList fetchTasksFunc={fetchTasks} tasksList={tasks} setEditingTaskFunc={setEditingTask} />
+            <motion.div
+            key="tasks-list"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.3 }}
+            >
+              <AddTaskForm fetchTasksFunc={fetchTasks} />
+            </motion.div>
+            
+
+            <motion.div
+            key="tasks-list"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3 }}
+            >
+              <TasksList
+                fetchTasksFunc={fetchTasks}
+                tasksList={tasks}
+                setEditingTaskFunc={setEditingTask}
+              />
+            </motion.div>
           </>
-      }
-      
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -47,15 +47,14 @@ const TasksList = ({fetchTasksFunc, tasksList, setEditingTaskFunc}) =>{
                   <td>{task.taskName}</td>
                   <td>{task.taskDesc ? task.taskDesc : "No description"}</td>
                   <td>{new Date(task.createOn).toISOString().split('T')[0]}</td>
-                    <td>
-                      <div className='isCompleted-label'>
-                        <input type="checkbox" 
-                          checked={task.isCompleted} 
-                          onChange={e => completedChange(task.taskGuid, e.target.checked)}
-                        />
-                      </div>
-
-                    </td>
+                  <td>
+                    <div className='isCompleted-label'>
+                      <input type="checkbox" 
+                        checked={task.isCompleted} 
+                        onChange={e => completedChange(task.taskGuid, e.target.checked)}
+                      />
+                    </div>
+                  </td>
                   <td>
                     <div className='actions-btns'>
                       <button className="edit-btn" onClick={() => setEditingTaskFunc(task)}>Edit</button>
