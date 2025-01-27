@@ -29,7 +29,7 @@ const App = () => {
     <div className="container">
       <h1>Task Manager</h1>
       {editingTask != null
-          ?  <EditTask editingTask={editingTask} setEditingTaskFunc={setEditingTask}/>
+          ?  <EditTask editingTask={editingTask} setEditingTaskFunc={setEditingTask} fetchTasksFunc={fetchTasks}/>
           : 
           <>
             <AddTaskForm fetchTasksFunc={fetchTasks} />
