@@ -25,10 +25,8 @@ h2 {
   font-size: 1.2em;
 }
 
-/* Container styles */
 .container {
-  min-width: 600px;
-  max-width: 900px;
+  width: 900px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -36,4 +34,5 @@ h2 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   transition: .2s;
+  overflow: hidden;
 }
