@@ -45,7 +45,7 @@ const EditTask = ({editingTask, setEditingTaskFunc, fetchTasksFunc}) =>{
 
     return (
         <div className="editTask-container">
-            {<h2 className="header">Edit task: "{editingTask.taskName}"</h2>}
+            {<h2 className="header">Edit Task: "{editingTask.taskName}"</h2>}
             <form className="editTask-form" onSubmit={onSubmit}>
                 <label htmlFor="task-name">
                     <h2>Name</h2>
