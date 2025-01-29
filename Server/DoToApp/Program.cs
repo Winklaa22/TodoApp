@@ -1,3 +1,5 @@
+using DoToApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -8,7 +10,7 @@ builder.Services.AddCors((options) =>
 {
     options.AddPolicy("DevCors", (corsBuilder) =>
     {
-        corsBuilder.WithOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8000")
+        corsBuilder.WithOrigins("http://localhost:5173")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials();
@@ -21,6 +23,8 @@ builder.Services.AddCors((options) =>
             .AllowCredentials();
     });
 });
+
+builder.Services.AddScoped<ApplicationDataContext>();
 
 var app = builder.Build();
 

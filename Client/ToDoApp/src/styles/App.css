@@ -1,0 +1,40 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+p{
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #444;
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+/* Container styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: .2s;
+}

@@ -1,11 +1,11 @@
 ﻿namespace DoToApp.DTO
 {
-    public class TaskDTO
+    public partial class TaskDTO
     {
-        public int TaskId;
-        public string? TaskName;
-        public string? IconName;
-        public string? TaskDesc;
-        public bool IsCompleted;
+        public Guid TaskGuid { get; set; }
+        public string? TaskName { get; set; }
+        public string? TaskDesc { get; set; }
+        public DateTime? CreateOn { get; set; }
+        public bool IsCompleted { get; set; }
     }
 }
