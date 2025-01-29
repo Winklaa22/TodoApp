@@ -39,6 +39,14 @@ namespace DoToApp.Controllers
             return tasks;
         }
 
+        [HttpGet("GetSortedTaskByComplete")]
+        public IEnumerable<TaskDTO> GetSortedTaskByComplete()
+        {
+            var sql = $@"SELECT * FROM TodoAppSchema.Tasks ORDER BY IsCompleted DESC, CreateOn";
+            var tasks = _dataContext.LoadData<TaskDTO>(sql);
+            return tasks;
+        }
+
         [HttpPost("AddTask")]
         public IActionResult AddTask(TaskToAddDTO task)
         {

@@ -1,13 +1,14 @@
 import {useState } from 'react';
 import axios from 'axios';
 import "./EditTask.css"
-import "../../styles/InputField.css";
+import InputField from '../InputfieldComponent/Inputfield';
+import TextAreaField from '../TextAreaComponent/TextArea';
 
 const EditTask = ({editingTask, setEditingTaskFunc, fetchTasksFunc}) =>{
     const [nameValue, setNameValue] = useState(editingTask.taskName)
     const maxLengthOfName = 20
     const [descValue, setDescValue] = useState(editingTask.taskDesc)
-    const maxLengthOfDesc = 25
+    const maxLengthOfDesc = 100
 
     const onClose = () =>{
         setEditingTaskFunc(null)
@@ -47,30 +48,25 @@ const EditTask = ({editingTask, setEditingTaskFunc, fetchTasksFunc}) =>{
         <div className="editTask-container">
             {<h2 className="header">Edit Task: "{editingTask.taskName}"</h2>}
             <form className="editTask-form" onSubmit={onSubmit}>
-                <label htmlFor="task-name">
-                    <h2>Name</h2>
-                    <input type="text"
-                        value={nameValue}
-                        onChange={(e) => setNameValue(e.target.value)} 
-                        maxLength={maxLengthOfName}
-                        required
-                    />
-                </label>
-                <div style={{ fontSize: '0.8rem', color: 'gray' }}>
-                  {nameValue.length}/{maxLengthOfName} characters
-                </div> 
-
-                <label htmlFor="task-desc">
-                    <h2>Description</h2>
-                    <input type="text"
-                        value={descValue}
-                        onChange={(e) => setDescValue(e.target.value)}
-                        maxLength={maxLengthOfDesc}
-                    />
-                </label>
-                <div style={{ fontSize: '0.8rem', color: 'gray' }}>
-                  {descValue.length}/{maxLengthOfDesc} characters
-                </div>
+                <InputField
+                  htmlFor={'task-nane'}
+                  headerText='Name'
+                  onChange={e => setNameValue(e.target.value)}
+                  value={nameValue}
+                  hasMaxLength={true}
+                  maxLength={maxLengthOfName}
+                  hasMaxLengthCounter={true}
+                />
+                
+                <TextAreaField
+                  htmlFor={'task-desc'}
+                  headerText='Description'
+                  onChange={e => setDescValue(e.target.value)}
+                  value={descValue}
+                  hasMaxLength={true}
+                  maxLength={maxLengthOfDesc}
+                  hasMaxLengthCounter={true}
+                />
                 <div className="buttons">
                     <button className="add-btn" type="submit">Submit</button>
                     <button onClick={onClose}>Close</button>

@@ -26,6 +26,7 @@ const App = () => {
     }
   };
 
+
   return (
     <div className="container">
       <AnimatePresence mode="wait">
@@ -47,40 +48,12 @@ const App = () => {
           </>
         ) : (
           <>
-            <motion.div
-            key="tasks-header"
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -100 }}
-            transition={{ duration: 0.3 }}
-            >
-            <h1>Task Manager</h1>
-            </motion.div>
-            
-            <motion.div
-            key="tasks-add"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.3 }}
-            >
-              <AddTaskForm fetchTasksFunc={fetchTasks} />
-            </motion.div>
-            
-
-            <motion.div
-            key="tasks-list"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ duration: 0.3 }}
-            >
-              <TasksList
-                fetchTasksFunc={fetchTasks}
-                tasksList={tasks}
-                setEditingTaskFunc={setEditingTask}
-              />
-            </motion.div>
+            <AddTaskForm fetchTasksFunc={fetchTasks} />
+            <TasksList
+              fetchTasksFunc={fetchTasks}
+              tasksList={tasks}
+              setEditingTaskFunc={setEditingTask}
+            />
           </>
         )}
       </AnimatePresence>

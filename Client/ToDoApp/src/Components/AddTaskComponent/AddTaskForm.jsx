@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./AddTaskForm.css"
-import "../../styles/InputField.css";
+import { motion, AnimatePresence } from "framer-motion";
+import InputField from '../InputfieldComponent/Inputfield';
+import TextAreaField from '../TextAreaComponent/TextArea';
 
 const AddTaskForm = ({fetchTasksFunc}) =>{
 
     const addTask = async () =>{
+      const taskData = {
+        taskName: taskName,
+        taskDesc: taskDesc
+      };
+      console.log({taskData})
         try {
           const taskData = {
             taskName: taskName,
@@ -33,48 +40,44 @@ const AddTaskForm = ({fetchTasksFunc}) =>{
 
     const [taskName, setTaskName] = useState('');
     const [taskDesc, setTaskDesc] = useState('');
-    const maxLengthOfName = 20
-    const maxLengthOfDesc = 25
+    const maxLengthOfName = 30
+    const maxLengthOfDesc = 100
     return (<>
-    <div className='new-task-container'>
-        <form className="new-task-form" onSubmit={(e) => {e.preventDefault(); addTask();}}>
-          <div className="form-row">
-              <label htmlFor="task-name">
-                <h2>Name</h2>
-                <input
-                    value={taskName} 
-                    onChange={e => setTaskName(e.target.value)} 
-                    type="text" 
-                    id="item"
-                    required
-                    maxLength={maxLengthOfName}
-                    onInvalid={(e) => e.target.setCustomValidity('Task name is required')}
-                    onInput={(e) => e.target.setCustomValidity('')}
+    <motion.div
+      key="tasks-add"
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className='new-task-container'>
+          <form className="new-task-form" onSubmit={(e) => {e.preventDefault(); addTask();}}>
+            <div className="form-row">
+                <InputField
+                  htmlFor={'task-nane'}
+                  headerText='Name'
+                  onChange={e => setTaskName(e.target.value)}
+                  value={taskName}
+                  hasMaxLength={true}
+                  maxLength={maxLengthOfName}
+                  hasMaxLengthCounter={true}
                 />
-                <div style={{ fontSize: '0.8rem', color: 'gray' }}>
-                  {taskName.length}/{maxLengthOfName} characters
-                </div> 
-              </label>
-
-              
-              <label htmlFor="task-desc">
-                <h2>Description</h2>
-                <input
-                    value={taskDesc}
-                    onChange={e => setTaskDesc(e.target.value)} 
-                    maxLength={maxLengthOfDesc}
-                    type="text" 
-                    id="item"
+                
+                <TextAreaField
+                  htmlFor={'task-desc'}
+                  headerText='Description'
+                  onChange={e => setTaskDesc(e.target.value)}
+                  value={taskDesc}
+                  hasMaxLength={true}
+                  maxLength={maxLengthOfDesc}
+                  hasMaxLengthCounter={true}
                 />
-                <div style={{ fontSize: '0.8rem', color: 'gray' }}>
-                  {taskDesc.length}/{maxLengthOfDesc} characters
-                </div> 
-                </label>
-              
-          </div>
-          <button className="add-btn" type="submit">Add task</button>
-        </form>
+                
+            </div>
+            <button className="add-btn" type="submit">Add task</button>
+          </form>
       </div>
+    </motion.div>
     </>)
     }
 
